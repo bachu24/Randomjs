@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Lobster&family=Rubik+Scribble&display=swap" rel="stylesheet">
+<title>Love Calculator</title>
+<style>
+    
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+
+        font-family: "Lobster", system-ui;
+        font-weight: 400;
+        font-style: normal;
+        text-align: center;
+        font-size: 30px;
+        background-color: pink;
+    }
+    h1 {
+        color: black;
+    }
+    #result {
+        font-family: "Gloria Hallelujah", cursive;
+        font-weight: bold;
+         font-style: normal;
+        padding-top: 10px;
+
+
+        font-size: 27px;
+        color: #ee3131;
+    }
+    button {
+        padding: 20px 30px;
+        margin-top: 20px;
+        margin-left: 20px;
+        font-size: 18px;
+        background-color: #de1010;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    input{
+        padding: 10px 20px;
+        font-size: 18px;
+        border: solid 2px #000000;
+        border-radius: 5px;
+        cursor: pointer;
+    
+    }
+</style>
+</head>
+<body>
+    <div>
+        <h1>Love Calculator</h1>
+        <input type="text" id="firstName" placeholder="Your Name">
+        <input type="text" id="secondName" placeholder="Partner's Name">
+        <button id="calculateButton">Calculate</button>
+        <div id="result"></div>
+    </div>
+<script>
+    document.getElementById('calculateButton').addEventListener('click', function() {
+        var firstName = document.getElementById('firstName').value.trim();
+        var secondName = document.getElementById('secondName').value.trim();
+
+        if (firstName === '' || secondName === '') {
+            alert('Please enter both names.');
+            return;
+        }
+
+        var loveScore = calculateLoveScore(firstName, secondName);
+        var resultDiv = document.getElementById('result');
+        var resultText = 'The love score between ' + firstName + ' and ' + secondName + ' is ' + loveScore + '%!';
+
+        if (loveScore > 90) {
+            resultText += ' Perfecto!';
+        } else if (loveScore > 70) {
+            resultText += ' Almost there!';
+        } else if (loveScore > 50) {
+            resultText += ' On the dot!';
+        } else if (loveScore > 30) {
+            resultText += ' Complicated!';
+        } else {
+            alert(resultText += ' Time to say goodbye!');
+        }
+
+        resultDiv.textContent = resultText;
+    });
+
+    function calculateLoveScore(firstName, secondName) {
+        var score = Math.floor(Math.random() * 100)+1;
+        return score;
+    }
+</script>
+</body>
+</html>
